@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-no-margin">
+      <ion-back-button slot="start" color="primary" defaultHref="/home" text=""
+          icon="chevron-back-outline"></ion-back-button>
+  </ion-buttons>
+    <ion-title mode="ios">Page two</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card class="main-crd">
+    <ion-card class="crd-ig" *ngFor="let img of displayImages; let i = index">
+      <img src="{{img.imageUrl}}" width="100%" height="300px" alt="">
+    </ion-card>
+
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreImages($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="circles"
+        loadingText="Loading more images...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-card>
+ 
+</ion-content>

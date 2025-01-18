@@ -1,20 +1,33 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
+    <ion-title mode="ios">
+      First Page
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="main">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <!-- <div class="canvas-main">
+    
+  </div> -->
+
+  <ion-card class="canvas-main" *ngIf="displayClickedImg != ''">
+    <img  class="canvas-img" src="{{displayClickedImg}}" width="{{width}}" height="{{height}}" alt="">
+  </ion-card>
+
+  <ion-card class="canvas-main" *ngIf="displayClickedImg == ''">
+    <img  class="canvas-img" src="./../../assets/cam.jpg" width="{{width}}" height="{{height}}" alt="">
+  </ion-card>
+
+  <div class="input-main">
+    <ion-input label="Width" mode="md" type="number" label-placement="floating" fill="outline" placeholder="Width" [(ngModel)]="width"></ion-input>
+    <ion-input label="Height" mode="md" type="number" label-placement="floating" fill="outline" placeholder="Height" [(ngModel)]="height"></ion-input>
   </div>
+
+  <div class="action-btn" >
+    <ion-button (click)="openCamera()">Open Camera</ion-button>
+    <ion-button (click)="exportImage()">Export Image</ion-button>
+  </div>
+  
 </ion-content>
